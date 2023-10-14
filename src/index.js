@@ -1,20 +1,30 @@
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
+import Notiflix from 'notiflix';
+Notiflix.Notify.init({
+  position: 'center-top',
+});
 
 const breedselector = document.querySelector('.breed-select');
 const loaderMsg = document.querySelector('.loader');
+const loaderImg = document.querySelector('.gif-loader');
 const errorMsg = document.querySelector('.error');
 const textInfoBlock = document.querySelector('.cat-info');
 loaderMsg.style.display = 'block';
+loaderImg.style.display = 'block';
 fetchBreeds()
   .then(data => {
     loaderMsg.style.display = 'none';
+    loaderImg.style.display = 'none';
+
     breedselector.innerHTML = createSelectMarkup(data);
     breedselector.style.display = 'block';
-    // console.log(data);
   })
   .catch(err => {
-    errorMsg.style.display = 'block';
+    Notiflix.Notify.warning(
+      'Oops! Something went wrong! Try reloading the page!'
+    );
     loaderMsg.style.display = 'none';
+    loaderImg.style.display = 'none';
   });
 
 function createSelectMarkup(arr) {
@@ -24,16 +34,22 @@ function createSelectMarkup(arr) {
 }
 function handleClick(event) {
   loaderMsg.style.display = 'block';
+  loaderImg.style.display = 'block';
+
   textInfoBlock.innerHTML = '';
   fetchCatByBreed(event.currentTarget.value)
     .then(data => {
       loaderMsg.style.display = 'none';
-      console.log(data);
+      loaderImg.style.display = 'none';
+
       textInfoBlock.innerHTML = createMarkup(data);
     })
     .catch(err => {
-      errorMsg.style.display = 'block';
+      Notiflix.Notify.warning(
+        'Oops! Something went wrong! Try reloading the page!'
+      );
       loaderMsg.style.display = 'none';
+      loaderImg.style.display = 'none';
     });
 }
 
