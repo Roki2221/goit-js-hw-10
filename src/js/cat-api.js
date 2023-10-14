@@ -11,7 +11,7 @@ function fetchBreeds() {
 }
 
 function fetchCatByBreed(breedId) {
-  const BASE_URL = 'https://api.thecatpi.com/v1/images/search';
+  const BASE_URL = 'https://api.thecatapi.com/v1/images/search';
   const API_KEY =
     'live_ios2ViwVftg3OAym14VSiesOXjCkOsDERoxC7To1ST9s1rQKqYjTMpKJreUyVgzl';
 
