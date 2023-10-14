@@ -1,0 +1,14 @@
+.breed-select {
+  display: none;
+}
+.loader {
+  display: none;
+}
+.error {
+  display: none;
+}
+.cat-info {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
