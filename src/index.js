@@ -15,7 +15,7 @@ fetchBreeds()
   .then(data => {
     loaderMsg.style.display = 'none';
     loaderImg.style.display = 'none';
-
+    console.log(data);
     breedselector.innerHTML = createSelectMarkup(data);
     breedselector.style.display = 'block';
   })
@@ -41,6 +41,7 @@ function handleClick(event) {
     .then(data => {
       loaderMsg.style.display = 'none';
       loaderImg.style.display = 'none';
+      console.log(data);
 
       textInfoBlock.innerHTML = createMarkup(data);
     })
@@ -67,3 +68,5 @@ function createMarkup(arr) {
     .join('');
 }
 breedselector.addEventListener('change', handleClick);
+console.log(fetchBreeds());
+console.log(fetchCatByBreed('abys'));
