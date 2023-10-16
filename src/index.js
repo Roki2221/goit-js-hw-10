@@ -23,6 +23,7 @@ fetchBreeds()
     Notiflix.Notify.warning(
       'Oops! Something went wrong! Try reloading the page!'
     );
+    errorMsg.style.display = 'block';
     loaderMsg.style.display = 'none';
     loaderImg.style.display = 'none';
   });
@@ -49,6 +50,7 @@ function handleClick(event) {
       Notiflix.Notify.warning(
         'Oops! Something went wrong! Try reloading the page!'
       );
+      errorMsg.style.display = 'block';
       loaderMsg.style.display = 'none';
       loaderImg.style.display = 'none';
     });

@@ -6,6 +6,7 @@
 }
 .error {
   display: none;
+  color: red;
 }
 .cat-info {
   margin-top: 20px;
