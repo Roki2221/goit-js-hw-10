@@ -36,21 +36,31 @@ function createSelectMarkup(arr) {
 function handleClick(event) {
   loaderMsg.style.display = 'block';
   loaderImg.style.display = 'block';
-
+  errorMsg.style.display = 'none';
   textInfoBlock.innerHTML = '';
   fetchCatByBreed(event.currentTarget.value)
     .then(data => {
       loaderMsg.style.display = 'none';
       loaderImg.style.display = 'none';
       console.log(data);
-
+      if (data.length === 0) {
+        throw new Error('Empty arr');
+      }
       textInfoBlock.innerHTML = createMarkup(data);
     })
     .catch(err => {
-      Notiflix.Notify.warning(
-        'Oops! Something went wrong! Try reloading the page!'
-      );
-      errorMsg.style.display = 'block';
+      console.log(err);
+      if (err.message === 'Empty arr') {
+        Notiflix.Notify.warning(
+          'Oops! There is no information about this cat!'
+        );
+      } else {
+        Notiflix.Notify.warning(
+          'Oops! Something went wrong! Try reloading the page!'
+        );
+        errorMsg.style.display = 'block';
+      }
+
       loaderMsg.style.display = 'none';
       loaderImg.style.display = 'none';
     });
